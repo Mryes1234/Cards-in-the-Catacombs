@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
     public List<Card_data> discard_pile = new List<Card_data>();
 
     public Canvas canvas;
-
+    public Card_data data;
     public Vector3 Player_hand_pos;
     public Vector3 ai_hand_pos;
     public Card blank;
@@ -33,6 +34,31 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         canvas = FindObjectOfType<Canvas>();
+        // if (damage != 0)
+        // {
+        //     damageText.text = "  damage";
+        // }
+        // else
+        // {
+        //     healText.text = "";
+        //     blockText.text = "";
+        // }
+        // if (heal != 0)
+        // {
+            
+        // }
+        // else
+        // {
+            
+        // }
+        // if (block != 0)
+        // {
+            
+        // }
+        // else
+        // {
+            
+        // }
         Deal();
     }
 
