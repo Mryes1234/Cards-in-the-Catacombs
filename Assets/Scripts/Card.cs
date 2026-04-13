@@ -38,8 +38,34 @@ public class Card : MonoBehaviour
         descriptionText.text = description;
         costText.text = cost.ToString();
         damageText.text = damage.ToString();
+        healText.text = heal.ToString();
+        blockText.text = block.ToString();
         spriteImage.sprite = sprite;
-
+        if (damage != 0)
+        {
+            damageText.text = damageText.text + " damage";
+        }
+        else
+        {
+            damageText.text = "";
+        }
+        if (heal != 0)
+        {
+            healText.text = healText.text + " health";
+        }
+        else
+        {
+            healText.text = "";
+        }
+        if (block != 0)
+        {
+            blockText.text = blockText.text + " block";
+        }
+        else
+        {
+            blockText.text = "";
+        }
+        costText.text = costText.text + " energy";
     }
 
     // Update is called once per frame

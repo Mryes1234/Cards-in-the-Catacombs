@@ -34,31 +34,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         canvas = FindObjectOfType<Canvas>();
-        // if (damage != 0)
-        // {
-        //     damageText.text = "  damage";
-        // }
-        // else
-        // {
-        //     healText.text = "";
-        //     blockText.text = "";
-        // }
-        // if (heal != 0)
-        // {
-            
-        // }
-        // else
-        // {
-            
-        // }
-        // if (block != 0)
-        // {
-            
-        // }
-        // else
-        // {
-            
-        // }
         Deal();
     }
 
@@ -72,8 +47,8 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i += 1)
         {
-            Card top_card = Instantiate(blank, Player_hand_pos, Quaternion.identity, canvas.transform);
-            Player_hand_pos.x += 100;
+            Card top_card = Instantiate(blank, Player_hand_pos, Quaternion.Euler(0, 0, 0), canvas.transform);
+            Player_hand_pos.x += 115;
             top_card.data = player_deck[0];
 
             player_hand.Add(top_card.data);
