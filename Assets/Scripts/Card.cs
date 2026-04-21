@@ -15,6 +15,7 @@ public class Card : MonoBehaviour
     public int heal;
     public int block;
     public Sprite sprite;
+    public Image background;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
     public TextMeshProUGUI costText;
@@ -23,7 +24,7 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI blockText;
     public Image spriteImage;
         
-
+    //rgb(218, 83, 83)
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +45,7 @@ public class Card : MonoBehaviour
         if (damage != 0)
         {
             damageText.text = damageText.text + " damage";
+            background.color = new Color32(218, 83, 83, 255);
         }
         else
         {
@@ -52,6 +54,7 @@ public class Card : MonoBehaviour
         if (heal != 0)
         {
             healText.text = healText.text + " health";
+            background.color = new Color32(122, 206, 88, 255);
         }
         else
         {
@@ -60,6 +63,7 @@ public class Card : MonoBehaviour
         if (block != 0)
         {
             blockText.text = blockText.text + " block";
+            background.color = new Color32(20, 185, 197, 255);
         }
         else
         {
