@@ -279,10 +279,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4581742794927167067, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -4737379644231553879, guid: a70fd7a62c9944e6c86d242c8802f553, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -502,6 +498,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83889500afea9401ca5d1ad30a485a32, type: 2}
   ai_deck: []
   player_hand: []
+  discard: []
   player_hand_object: []
   ai_hand: []
   discard_pile: []
@@ -510,6 +507,9 @@ MonoBehaviour:
   Player_hand_pos: {x: 250, y: 100, z: 0}
   ai_hand_pos: {x: 0, y: 0, z: 0}
   blank: {fileID: 4608709814338197990, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
+  spacing: 75
+  amplitude: 40
+  frequency: 2.105
 --- !u!4 &2054028020
 Transform:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public List<Card_data> player_deck = new List<Card_data>();
     public List<Card_data> ai_deck = new List<Card_data>();
     public List<Card> player_hand = new List<Card>();
+    public List<Card> discard = new List<Card>();
     public List<GameObject> player_hand_object = new List<GameObject>();
     public List<Card_data> ai_hand = new List<Card_data>();
     public List<Card_data> discard_pile = new List<Card_data>();
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
     public Vector3 Player_hand_pos;
     public Vector3 ai_hand_pos;
     public Card blank;
+    public float spacing = 75f;
+    public float amplitude = 40f;
+    public float frequency = 2.105f;
     float currentAngle = 30f;
     float step = -15f;
     private void Awake()
@@ -52,11 +56,12 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i += 1)
         {
-            Card top_card = Instantiate(blank, Player_hand_pos, Quaternion.Euler(0, 0, currentAngle), canvas.transform);
+            float x = i * spacing;
+            float y = Mathf.Sin(x * frequency) * amplitude;
+            Vector3 wave_shape = new Vector3(x, y, 0);
+            Card top_card = Instantiate(blank, Player_hand_pos + wave_shape, Quaternion.Euler(0, 0, currentAngle), canvas.transform);
             currentAngle += step;
-            Player_hand_pos.x += 115;
             top_card.data = player_deck[0];
-            
             player_hand.Add(top_card);
             player_deck.RemoveAt(0);
             
@@ -74,8 +79,12 @@ public class GameManager : MonoBehaviour
     {
         int random = Random.Range(0, ai_hand.Count);
     }
-
-
-
+    //Need selected card from canvas click and drag mouse stuff
+    void Discard()
+    {
+        //discard.Add(top_card);
+        //player_hand.RemoveAt(0);
+    }
+    //Local space for relative up when selecting cards
     
 }
