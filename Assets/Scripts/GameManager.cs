@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
             currentAngle += step;
             top_card.data = player_deck[0];
             player_hand.Add(top_card);
+            player_hand_object.Add(top_card.gameObject);
             player_deck.RemoveAt(0);
             
             //ai_hand.Add(deck[0]);
