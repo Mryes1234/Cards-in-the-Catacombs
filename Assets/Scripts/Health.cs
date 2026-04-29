@@ -1,14 +1,17 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public int maxHealth = 12;
     public int currentHealth;
+    public TextMeshProUGUI healthText;
     public HealthBar healthbar;
     void Start()
     {
         currentHealth = maxHealth;
+        UpdateHealthUI();
         if (healthbar != null) healthbar.SetMaxHealth(maxHealth);
     }
 
@@ -23,6 +26,11 @@ public class Health : MonoBehaviour
     //     }
     // }
 
+    void UpdateHealthUI()
+    {
+        healthText.text = "HP: " + currentHealth + " / " + maxHealth;
+    }
+    
     void Die()
     {
         Debug.Log("You Died");

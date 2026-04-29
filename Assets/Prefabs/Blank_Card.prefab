@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4608709814338197990}
   - component: {fileID: 4329481296632652897}
   - component: {fileID: 211430244918319061}
+  - component: {fileID: 7664753934553948763}
   m_Layer: 0
   m_Name: Blank_Card
   m_TagString: Untagged
@@ -132,8 +133,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4a4efae810d4a1a8b8cc419a43cbe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Draggable_UI
-  minY: -5
-  maxY: 5
+--- !u!114 &7664753934553948763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139944937306382617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60a45b1ebb3147f487f4b45b7d96dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+  slider: {fileID: 0}
 --- !u!1 &2135455900782022775
 GameObject:
   m_ObjectHideFlags: 0

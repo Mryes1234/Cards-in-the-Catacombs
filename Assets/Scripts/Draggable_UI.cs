@@ -32,7 +32,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         Debug.Log("Finished dragging " + gameObject.name);
         if (onTable)
         {
-            
+            //snap to a particular place
         }
         else
         {
