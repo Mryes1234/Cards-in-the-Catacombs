@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public List<Card> player_hand = new List<Card>();
     public List<Card> discard = new List<Card>();
     public List<GameObject> player_hand_object = new List<GameObject>();
-    public List<Card_data> ai_hand = new List<Card_data>();
+    public List<Card> ai_hand = new List<Card>();
     public List<Card_data> discard_pile = new List<Card_data>();
 
     public Canvas canvas;
@@ -24,8 +24,11 @@ public class GameManager : MonoBehaviour
     public float spacing = 75f;
     public float amplitude = 40f;
     public float frequency = 2.105f;
+    public float aifrequency = -2.105f;
     float currentAngle = 30f;
+    float aicurrentAngle = 150f;
     float step = -15f;
+    float aistep = 15f;
     private void Awake()
     {
         if (gm != null && gm != this)
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
         canvas = FindObjectOfType<Canvas>();
         Shuffle();
         Deal();
+        AI_Turn();
     }
 
     // Update is called once per frame
@@ -65,22 +69,31 @@ public class GameManager : MonoBehaviour
             player_hand.Add(top_card);
             player_hand_object.Add(top_card.gameObject);
             player_deck.RemoveAt(0);
-            
-            //ai_hand.Add(deck[0]);
-            //deck.RemoveAt(0);
         }
     }
 
     void Shuffle()
     {
         player_deck = player_deck.OrderBy(x => Random.value).ToList();
+        ai_deck = ai_deck.OrderBy(x => Random.value).ToList();
     }
 
     void AI_Turn()
     {
-        int random = Random.Range(0, ai_hand.Count);
+        for (int i = 0; i < 5; i += 1)
+        {
+            float x = i * spacing;
+            float y = Mathf.Sin(x * aifrequency) * amplitude;
+            Vector3 wave_shape = new Vector3(x, y, 0);
+            Card ai_top_card = Instantiate(blank, ai_hand_pos + wave_shape, Quaternion.Euler(0, 0, aicurrentAngle), canvas.transform);
+            aicurrentAngle += aistep;
+            int random = Random.Range(0, ai_hand.Count);
+            ai_top_card.data = ai_deck[0];
+            ai_hand.Add(ai_top_card);
+            ai_deck.RemoveAt(0);
+        }
     }
-    //Need selected card from canvas click and drag mouse stuff
+    
     void Discard()
     {
         //discard.Add(top_card);

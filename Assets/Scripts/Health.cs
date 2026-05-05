@@ -7,12 +7,12 @@ public class Health : MonoBehaviour
     public int maxHealth = 12;
     public int currentHealth;
     public TextMeshProUGUI healthText;
-    public HealthBar healthbar;
+    public HealthBar health;
     void Start()
     {
         currentHealth = maxHealth;
         UpdateHealthUI();
-        if (healthbar != null) healthbar.SetMaxHealth(maxHealth);
+        if (health != null) health.SetMaxHealth(maxHealth);
     }
 
     // public void TakeDamage()
