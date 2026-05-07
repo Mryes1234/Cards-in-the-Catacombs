@@ -18,7 +18,7 @@ public class ShieldBar : MonoBehaviour
 
     void Start()
     {
-        
+        slider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

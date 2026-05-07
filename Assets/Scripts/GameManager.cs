@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public Vector3 Player_hand_pos;
     public Vector3 ai_hand_pos;
     public Card blank;
+    public bool onTable = false;
+    public bool maxCard = false;
     public float spacing = 75f;
     public float amplitude = 40f;
     public float frequency = 2.105f;
@@ -47,7 +49,7 @@ public class GameManager : MonoBehaviour
         canvas = FindObjectOfType<Canvas>();
         Shuffle();
         Deal();
-        AI_Turn();
+        AI_Deal();
     }
 
     // Update is called once per frame
@@ -79,6 +81,11 @@ public class GameManager : MonoBehaviour
     }
 
     void AI_Turn()
+    {
+        
+    }
+
+    void AI_Deal()
     {
         for (int i = 0; i < 5; i += 1)
         {

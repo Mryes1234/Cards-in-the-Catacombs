@@ -8,6 +8,7 @@ public class Shield : MonoBehaviour
     public int currentShield;
     public TextMeshProUGUI shieldText;
     public ShieldBar shield;
+
     void Start()
     {
         currentShield = maxShield;

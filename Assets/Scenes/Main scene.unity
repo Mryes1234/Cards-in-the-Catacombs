@@ -380,6 +380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blank_Card
       objectReference: {fileID: 0}
+    - target: {fileID: 211430244918319061, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
+      propertyPath: maxCard
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 970200069765969068, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -460,15 +464,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7664753934553948763, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
-      propertyPath: slider
-      value: 
-      objectReference: {fileID: 886521409}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
+--- !u!1 &820824389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1971027561640277237, guid: d59fda0bb9b614ebaa38fb3e97de54d5, type: 3}
+  m_PrefabInstance: {fileID: 6200715034989495782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &836230210
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +714,7 @@ GameObject:
   - component: {fileID: 880331430}
   - component: {fileID: 880331433}
   - component: {fileID: 880331432}
-  - component: {fileID: 880331431}
+  - component: {fileID: 880331435}
   - component: {fileID: 880331434}
   m_Layer: 5
   m_Name: Player
@@ -737,22 +742,6 @@ RectTransform:
   m_AnchoredPosition: {x: -93.087585, y: -288.50082}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &880331431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880331429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c6328104d254e998dfdf14cddc4fca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 12
-  currentHealth: 0
-  healthText: {fileID: 2021587326}
-  health: {fileID: 886521410}
 --- !u!114 &880331432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,13 +789,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 880331429}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c6328104d254e998dfdf14cddc4fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 12
+  currentHealth: 0
+  healthText: {fileID: 2021587326}
+  health: {fileID: 886521410}
+--- !u!114 &880331435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880331429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1901bd4f634b441f8946ddff25d02fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shield
   maxShield: 8
   currentShield: 0
-  shieldText: {fileID: 2021587326}
-  shield: {fileID: 0}
+  shieldText: {fileID: 849801729}
+  shield: {fileID: 7210251662772938643}
 --- !u!224 &886521408 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7210251663592063862, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
@@ -1263,6 +1268,8 @@ MonoBehaviour:
   Player_hand_pos: {x: 250, y: 90, z: 0}
   ai_hand_pos: {x: 400, y: 445, z: 0}
   blank: {fileID: 4608709814338197990, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
+  onTable: 0
+  maxCard: 0
   spacing: 75
   amplitude: 40
   frequency: 2.105
@@ -1336,7 +1343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6414762748532443103, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
       propertyPath: m_Value
-      value: 12
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6414762748532443103, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
       propertyPath: m_MaxValue
@@ -1496,7 +1503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6848035684184210980, guid: d59fda0bb9b614ebaa38fb3e97de54d5, type: 3}
       propertyPath: m_Value
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6848035684184210980, guid: d59fda0bb9b614ebaa38fb3e97de54d5, type: 3}
       propertyPath: m_MaxValue
@@ -1590,20 +1597,48 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3473715862953941529, guid: d59fda0bb9b614ebaa38fb3e97de54d5, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1544922812654140010, guid: d59fda0bb9b614ebaa38fb3e97de54d5, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7658606264664144712, guid: d59fda0bb9b614ebaa38fb3e97de54d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 849801731}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1971027561640277237, guid: d59fda0bb9b614ebaa38fb3e97de54d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7210251662772938643}
   m_SourcePrefab: {fileID: 100100000, guid: d59fda0bb9b614ebaa38fb3e97de54d5, type: 3}
 --- !u!224 &7210251662772938640 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7658606264664144712, guid: d59fda0bb9b614ebaa38fb3e97de54d5, type: 3}
   m_PrefabInstance: {fileID: 6200715034989495782}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7210251662772938642 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6848035684184210980, guid: d59fda0bb9b614ebaa38fb3e97de54d5, type: 3}
+  m_PrefabInstance: {fileID: 6200715034989495782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820824389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &7210251662772938643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820824389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: febe566081141486391e824e4dc66edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShieldBar
+  slider: {fileID: 7210251662772938642}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

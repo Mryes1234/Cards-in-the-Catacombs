@@ -1,4 +1,3 @@
-using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,7 +7,8 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private Canvas canvas;
     private Quaternion initialRotation;
     private Vector3 initialTransform;
-    private bool onTable = false;
+    public bool onTable = false;
+    public bool maxCard = false;
 
     void Awake()
     {
@@ -30,9 +30,10 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("Finished dragging " + gameObject.name);
-        if (onTable)
+        if (onTable == true && maxCard == false)
         {
             //snap to a particular place
+            maxCard = true;
         }
         else
         {
@@ -55,7 +56,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Table"))
+        if (collision.gameObject.CompareTag("Table") && maxCard == false)
         {
             onTable = true;
         }
@@ -67,6 +68,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
        if (collision.gameObject.CompareTag("Table"))
         {
             onTable = false;
+            maxCard = false;
         }
     }
 }
