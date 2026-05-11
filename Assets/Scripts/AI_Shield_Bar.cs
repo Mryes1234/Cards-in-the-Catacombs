@@ -1,0 +1,29 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class AI_Shield_Bar : MonoBehaviour
+{
+    public Slider slider;
+
+    public void SetMaxShield(int shield)
+    {
+        slider.maxValue = shield;
+        slider.value = shield;
+    }
+
+    public void SetShield(int shield)
+    {
+        slider.value = shield;
+    }
+
+    void Start()
+    {
+        slider.gameObject.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}

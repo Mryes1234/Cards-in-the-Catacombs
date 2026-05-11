@@ -74,6 +74,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Draw()
+    {
+        Card top_card = Instantiate(blank, Player_hand_pos, Quaternion.Euler(0, 0, currentAngle), canvas.transform);
+        currentAngle += step;
+        top_card.data = player_deck[0];
+        player_hand.Add(top_card);
+        player_hand_object.Add(top_card.gameObject);
+        player_deck.RemoveAt(0);
+    }
     void Shuffle()
     {
         player_deck = player_deck.OrderBy(x => Random.value).ToList();
