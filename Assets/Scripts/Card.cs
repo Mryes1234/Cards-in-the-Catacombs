@@ -23,7 +23,9 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI healText;
     public TextMeshProUGUI blockText;
     public Image spriteImage;
-        
+        //X = 26.1107
+        //y = 7.73281
+        //Z = -7.551072e-05
     //rgb(218, 83, 83)
     // Start is called before the first frame update
     void Start()
