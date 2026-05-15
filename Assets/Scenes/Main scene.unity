@@ -257,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 62996340}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -128.94006, y: -169.1337, z: 0}
+  m_LocalPosition: {x: -376.69006, y: -186.88367, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -904,59 +904,59 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: 13.077606
-        y: -4.902481
-        z: 0
+        x: -99.81592
+        y: -5.4334106
+        z: -0.0000026643975
       TangentIn:
         x: -0
         y: -0
-        z: -8.82731
+        z: -20.755493
       TangentOut:
         x: 0
         y: 0
-        z: 8.82731
+        z: 20.755493
       Rotation:
         value:
-          x: 0.3819034
-          y: 0.5951049
-          z: 0.595105
-          w: 0.38190317
+          x: 0.41504788
+          y: 0.57248086
+          z: 0.57248145
+          w: 0.41504925
     - Position:
-        x: 93.325806
-        y: 31.872047
-        z: 0
+        x: 97.4505
+        y: 59.103455
+        z: 0.00036036555
       TangentIn:
         x: 0
         y: 0
-        z: -57.671173
+        z: -110.30858
       TangentOut:
         x: 0
         y: 0
-        z: 60.31453
+        z: 120.612274
       Rotation:
         value:
-          x: 0.50044715
-          y: 0.49955
-          z: 0.4995526
-          w: 0.50044936
+          x: 0.50015706
+          y: 0.49984112
+          z: 0.4998464
+          w: 0.50015527
     - Position:
-        x: 172.67447
-        y: -4.2402115
-        z: 0
+        x: 300.55463
+        y: -5.433411
+        z: -0.0000021119288
       TangentIn:
         x: -0
         y: -0
-        z: -8.717974
+        z: -21.3111
       TangentOut:
         x: 0
         y: 0
-        z: 8.717974
+        z: 21.3111
       Rotation:
         value:
-          x: 0.5946065
-          y: 0.38267884
-          z: 0.38267878
-          w: 0.5946065
+          x: 0.57070845
+          y: 0.41748375
+          z: 0.41748208
+          w: 0.57070833
     m_MetaData:
     - Mode: 0
       Tension: 0.5
@@ -984,7 +984,7 @@ Transform:
   m_GameObject: {fileID: 720859285}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -191, y: -189.5, z: 0}
+  m_LocalPosition: {x: -175.75, y: -192.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1002,9 +1002,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blank_Card
       objectReference: {fileID: 0}
-    - target: {fileID: 211430244918319061, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
-      propertyPath: maxCard
-      value: 1
+    - target: {fileID: 139944937306382617, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
+      propertyPath: m_TagString
+      value: Card
       objectReference: {fileID: 0}
     - target: {fileID: 970200069765969068, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
       propertyPath: m_Pivot.x
@@ -1361,7 +1361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -93.087585, y: -308.50082}
+  m_AnchoredPosition: {x: -93.087585, y: -303.25082}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &880331432
@@ -2020,6 +2020,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768524745}
   m_CullTransparentMesh: 1
+--- !u!114 &1768873957 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4608709814338197990, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
+  m_PrefabInstance: {fileID: 751988849}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fa534983bed543169ce438dfad802a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1782656752 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7422071038540482331, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
@@ -2067,6 +2078,7 @@ GameObject:
   - component: {fileID: 1818877863}
   - component: {fileID: 1818877865}
   - component: {fileID: 1818877866}
+  - component: {fileID: 1818877867}
   m_Layer: 5
   m_Name: Table
   m_TagString: Table
@@ -2205,6 +2217,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1818877867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818877861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11107df410ffa445ca51014c421fceae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MaxCardTable
+  card: {fileID: 1768873957}
+  maxCard: 0
 --- !u!1 &1987156346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,10 +2509,11 @@ MonoBehaviour:
   discard_pile: []
   canvas: {fileID: 0}
   data: {fileID: 0}
-  Player_hand_pos: {x: 250, y: 90, z: 0}
+  Player_hand_pos: {x: 0, y: 0, z: 0}
   ai_hand_pos: {x: 400, y: 445, z: 0}
   blank: {fileID: 4608709814338197990, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
   myButton: {fileID: 252760352}
+  offset: {x: 310, y: 65, z: 0}
   drawable: 1
   onTable: 0
   maxCard: 0

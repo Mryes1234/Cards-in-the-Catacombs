@@ -7,6 +7,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private Canvas canvas;
     private Quaternion initialRotation;
     private Vector3 initialTransform;
+    public float rotationSpeed = 1000f;
     public bool onTable = false;
     public bool maxCard = false;
 
@@ -24,7 +25,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-        transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, rotationSpeed * Time.deltaTime);
     }
 
     public void OnEndDrag(PointerEventData eventData)

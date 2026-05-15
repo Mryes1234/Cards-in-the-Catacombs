@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public Vector3 ai_hand_pos;
     public Card blank;
     public Button myButton;
+    public Vector3 offset;
     public bool drawable = true;
     public bool onTable = false;
     public bool maxCard = false;
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
         Shuffle();
         AIUpdateCardPositions();
     }
-
+    //-2.108372e-06
     // Update is called once per frame
     void Update()
     {
@@ -68,10 +69,12 @@ public class GameManager : MonoBehaviour
         {
             float p = firstCardPosition + i * cardSpacing;
             Vector3 splinePosition = spline.EvaluatePosition(p);
+            print(splinePosition);
+            //Vector3 splinePosition = 
             Vector3 forward = spline.EvaluateTangent(p);
             Vector3 up = spline.EvaluateUpVector(p);
             Quaternion rotation = Quaternion.LookRotation(up, Vector3.Cross(up, forward).normalized);
-            player_hand_object[i].transform.DOMove(splinePosition, 0.25f);
+            player_hand_object[i].transform.DOMove(splinePosition + offset, 0.25f);
             player_hand_object[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
         }
     }
@@ -79,7 +82,7 @@ public class GameManager : MonoBehaviour
     public void Draw()
     {
         if (player_hand_object.Count >= maxHandSize) return;
-        Card top_card = Instantiate(blank,spawnPoint.position,spawnPoint.rotation);
+        Card top_card = Instantiate(blank, spawnPoint.position, spawnPoint.rotation, canvas.transform);
         top_card.data = player_deck[0];
         player_hand.Add(top_card);
         player_hand_object.Add(top_card.gameObject);
@@ -107,20 +110,20 @@ public class GameManager : MonoBehaviour
 
     private void AIUpdateCardPositions()
     {
-        if (ai_hand.Count == 0) return;
-        float cardSpacing = 1f / maxHandSize;
-        float firstCardPosition = 0.5f - (ai_hand.Count - 1) * cardSpacing / 2;
-        Spline spline = splineContainer.Spline;
-        for (int i = 0; i < ai_hand.Count; i++)
-        {
-            float p = firstCardPosition + i * cardSpacing;
-            Vector3 splinePosition = spline.EvaluatePosition(p);
-            Vector3 forward = spline.EvaluateTangent(p);
-            Vector3 up = spline.EvaluateUpVector(p);
-            Quaternion rotation = Quaternion.LookRotation(up, Vector3.Cross(up, forward).normalized);
-            ai_hand[i].transform.DOMove(splinePosition, 0.25f);
-            ai_hand[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
-        }
+        // if (ai_hand.Count == 0) return;
+        // float cardSpacing = 1f / maxHandSize;
+        // float firstCardPosition = 0.5f - (ai_hand.Count - 1) * cardSpacing / 2;
+        // Spline spline = splineContainer.Spline;
+        // for (int i = 0; i < ai_hand.Count; i++)
+        // {
+        //     float p = firstCardPosition + i * cardSpacing;
+        //     Vector3 splinePosition = spline.EvaluatePosition(p);
+        //     Vector3 forward = spline.EvaluateTangent(p);
+        //     Vector3 up = spline.EvaluateUpVector(p);
+        //     Quaternion rotation = Quaternion.LookRotation(up, Vector3.Cross(up, forward).normalized);
+        //     ai_hand[i].transform.DOMove(splinePosition, 0.25f);
+        //     ai_hand[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
+        // }
     }
     
     void Discard()
