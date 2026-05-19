@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class MaxCardTable : MonoBehaviour
 {
+    public GameManager gm;
     public Card card;
+    private Quaternion initialRotation;
+    private Vector3 initialTransform;
     public bool maxCard = false;
     void Start()
     {
@@ -15,7 +18,13 @@ public class MaxCardTable : MonoBehaviour
         {
             maxCard = true;
         }
-        
+        else
+        {
+            if (maxCard == true)
+            {
+                gm.UpdateCardPositions();
+            }
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -28,9 +37,6 @@ public class MaxCardTable : MonoBehaviour
 
     void Update()
     {
-        if (maxCard == true)
-        {
-            
-        }
+        
     }
 }

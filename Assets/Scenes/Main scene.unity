@@ -1002,10 +1002,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blank_Card
       objectReference: {fileID: 0}
-    - target: {fileID: 139944937306382617, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
-      propertyPath: m_TagString
-      value: Card
-      objectReference: {fileID: 0}
+    - target: {fileID: 211430244918319061, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 2054028019}
+    - target: {fileID: 211430244918319061, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
+      propertyPath: table
+      value: 
+      objectReference: {fileID: 1818877861}
     - target: {fileID: 970200069765969068, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2229,6 +2233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11107df410ffa445ca51014c421fceae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MaxCardTable
+  gm: {fileID: 2054028019}
   card: {fileID: 1768873957}
   maxCard: 0
 --- !u!1 &1987156346

@@ -3,13 +3,15 @@ using UnityEngine.EventSystems;
 
 public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public GameManager gm;
+    public GameObject table;
+    public Vector2 activeTransform;
     private RectTransform rectTransform;
     private Canvas canvas;
     private Quaternion initialRotation;
     private Vector3 initialTransform;
     public float rotationSpeed = 1000f;
     public bool onTable = false;
-    public bool maxCard = false;
 
     void Awake()
     {
@@ -30,16 +32,14 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("Finished dragging " + gameObject.name);
-        if (onTable == true && maxCard == false)
+        if (onTable == true)
         {
-            //snap to a particular place
-            maxCard = true;
+            transform.position = activeTransform;
+            transform.rotation = initialRotation;
         }
         else
         {
-            transform.position = initialTransform;
-            transform.rotation = initialRotation;
+            gm.UpdateCardPositions();
         }
     }
 
@@ -47,6 +47,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         initialRotation = transform.rotation;
         initialTransform = transform.position;
+        activeTransform = table.transform.position;
     }
 
     // Update is called once per frame
@@ -57,7 +58,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Table") && maxCard == false)
+        if (collision.gameObject.CompareTag("Table"))
         {
             onTable = true;
         }
@@ -69,7 +70,6 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
        if (collision.gameObject.CompareTag("Table"))
         {
             onTable = false;
-            maxCard = false;
         }
     }
 }
