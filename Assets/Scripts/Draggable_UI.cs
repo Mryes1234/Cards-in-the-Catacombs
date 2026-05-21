@@ -9,7 +9,6 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private RectTransform rectTransform;
     private Canvas canvas;
     private Quaternion initialRotation;
-    private Vector3 initialTransform;
     public float rotationSpeed = 1000f;
     public bool onTable = false;
 
@@ -34,19 +33,19 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         if (onTable == true)
         {
+            Debug.Log("Test2");
             transform.position = activeTransform;
             transform.rotation = initialRotation;
         }
         else
         {
-            gm.UpdateCardPositions();
+            
         }
     }
 
     void Start()
     {
         initialRotation = transform.rotation;
-        initialTransform = transform.position;
         activeTransform = table.transform.position;
     }
 

@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Draggable_UI
   gm: {fileID: 0}
   table: {fileID: 0}
-  activeTransform: {x: 0, y: 0}
+  activeTransform: {x: 485, y: 268}
   rotationSpeed: 2000
   onTable: 0
 --- !u!1 &2135455900782022775

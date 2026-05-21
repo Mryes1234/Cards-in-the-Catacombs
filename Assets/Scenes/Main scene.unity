@@ -2462,6 +2462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2054028020}
   - component: {fileID: 2054028019}
+  - component: {fileID: 2054028021}
   m_Layer: 0
   m_Name: Dealer
   m_TagString: Untagged
@@ -2516,7 +2517,7 @@ MonoBehaviour:
   data: {fileID: 0}
   Player_hand_pos: {x: 0, y: 0, z: 0}
   ai_hand_pos: {x: 400, y: 445, z: 0}
-  blank: {fileID: 4608709814338197990, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
+  blank: {fileID: 1768873957}
   myButton: {fileID: 252760352}
   offset: {x: 310, y: 65, z: 0}
   drawable: 1
@@ -2537,6 +2538,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2054028021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054028018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fc74342812749938afa5d5430569b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnergyManager
+  gm: {fileID: 2054028019}
+  currentEnergy: 3
+  maxEnergy: 3
 --- !u!1001 &1854079906656978919
 PrefabInstance:
   m_ObjectHideFlags: 0
