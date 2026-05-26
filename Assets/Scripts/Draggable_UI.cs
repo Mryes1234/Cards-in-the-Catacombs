@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameManager gm;
+    public EnergyManager em;
     public GameObject table;
     public Vector2 activeTransform;
     private RectTransform rectTransform;
@@ -33,19 +34,19 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         if (onTable == true)
         {
-            Debug.Log("Test2");
             transform.position = activeTransform;
             transform.rotation = initialRotation;
+            em.OnCardPlayed();
         }
         else
         {
-            
+            gm.UpdateCardPositions();
         }
     }
 
     void Start()
     {
-        initialRotation = transform.rotation;
+        initialRotation = table.transform.rotation;
         activeTransform = table.transform.position;
     }
 

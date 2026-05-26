@@ -1,18 +1,24 @@
 using UnityEngine;
+using TMPro;
 
 public class EnergyManager : MonoBehaviour
 {
     public static EnergyManager Instance;
     public GameManager gm;
+    public Card card;
+    public Card_data card_Data;
+    public TMP_Text energy;
     public int currentEnergy;
     public int maxEnergy;
     
     void Awake() => Instance = this;
     public bool CanAfford(int energyCost) => currentEnergy >= energyCost;
-    public void SpendEnergy(int amount)
+    public void SpendEnergy(int cost)
     {
-        currentEnergy -= amount;
+        currentEnergy -= cost;
+        Debug.Log("This works!");
         UpdateUI();
+        Debug.Log("This works!3");
     }
 
     public void RefillEnergy()
@@ -22,12 +28,13 @@ public class EnergyManager : MonoBehaviour
     }
     void UpdateUI()
     {
-        
+        energy.text = "energy " + currentEnergy.ToString();
     }
-    public void OnCardPlayed(Card_data card)
+    public void OnCardPlayed()
     {
         if (EnergyManager.Instance.CanAfford(card.cost))
         {
+            Debug.Log("This works!2");
             EnergyManager.Instance.SpendEnergy(card.cost);
         }
         else
