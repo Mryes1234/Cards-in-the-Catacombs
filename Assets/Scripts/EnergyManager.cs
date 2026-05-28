@@ -6,7 +6,6 @@ public class EnergyManager : MonoBehaviour
     public static EnergyManager Instance;
     public GameManager gm;
     public Card card;
-    public Card_data card_Data;
     public TMP_Text energy;
     public int currentEnergy;
     public int maxEnergy;
@@ -16,9 +15,7 @@ public class EnergyManager : MonoBehaviour
     public void SpendEnergy(int cost)
     {
         currentEnergy -= cost;
-        Debug.Log("This works!");
         UpdateUI();
-        Debug.Log("This works!3");
     }
 
     public void RefillEnergy()
@@ -28,19 +25,19 @@ public class EnergyManager : MonoBehaviour
     }
     void UpdateUI()
     {
-        energy.text = "energy " + currentEnergy.ToString();
+        energy.text = "" + currentEnergy.ToString();
     }
-    public void OnCardPlayed()
+    public void OnCardPlayed(Card card)
     {
         if (EnergyManager.Instance.CanAfford(card.cost))
         {
-            Debug.Log("This works!2");
             EnergyManager.Instance.SpendEnergy(card.cost);
         }
         else
         {
             Debug.Log("Not enough energy!");
             gm.UpdateCardPositions();
+            RefillEnergy();
         }
     }
     void Start()

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Card : MonoBehaviour
 {
     public Card_data data;
+    public int CurrentIndex = 4927;
 
     public string card_name;
     public string description;

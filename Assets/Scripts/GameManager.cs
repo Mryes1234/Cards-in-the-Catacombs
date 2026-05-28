@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     public Canvas canvas;
     public Card_data data;
+    public int CurrentIndex = 4927;
     public Vector3 Player_hand_pos;
     public Vector3 ai_hand_pos;
     public Card blank;
@@ -52,7 +53,6 @@ public class GameManager : MonoBehaviour
         Shuffle();
         AIUpdateCardPositions();
     }
-    //-2.108372e-06
     // Update is called once per frame
     void Update()
     {
@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         float cardSpacing = 1f / maxHandSize;
         float firstCardPosition = 0.5f - (player_hand_object.Count - 1) * cardSpacing / 2;
         Spline spline = splineContainer.Spline;
+        
         for (int i = 0; i < player_hand_object.Count; i++)
         {
             float p = firstCardPosition + i * cardSpacing;
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         top_card.data = player_deck[0];
         player_hand.Add(top_card);
         player_hand_object.Add(top_card.gameObject);
+        top_card.CurrentIndex = player_hand.Count -1;
         UpdateCardPositions();
         player_deck.RemoveAt(0);
     }

@@ -7,6 +7,8 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public EnergyManager em;
     public GameObject table;
     public Vector2 activeTransform;
+    public int cost;
+    public Card card;
     private RectTransform rectTransform;
     private Canvas canvas;
     private Quaternion initialRotation;
@@ -36,11 +38,14 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             transform.position = activeTransform;
             transform.rotation = initialRotation;
-            em.OnCardPlayed();
+            gm.CurrentIndex = cost;
+            card = gameObject.GetComponent<Card>();
+            em.OnCardPlayed(card);
         }
         else
         {
             gm.UpdateCardPositions();
+            em.RefillEnergy();
         }
     }
 
@@ -48,6 +53,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         initialRotation = table.transform.rotation;
         activeTransform = table.transform.position;
+        cost = card.CurrentIndex;
     }
 
     // Update is called once per frame
