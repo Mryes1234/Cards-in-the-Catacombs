@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
 
     public void UpdateCardPositions()
     {
-        Debug.Log("test1");
         if (player_hand_object.Count == 0) return;
         float cardSpacing = 1f / maxHandSize;
         float firstCardPosition = 0.5f - (player_hand_object.Count - 1) * cardSpacing / 2;

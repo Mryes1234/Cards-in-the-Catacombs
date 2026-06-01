@@ -1156,6 +1156,10 @@ PrefabInstance:
       value: Blank_Card
       objectReference: {fileID: 0}
     - target: {fileID: 211430244918319061, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
+      propertyPath: dm
+      value: 
+      objectReference: {fileID: 880331436}
+    - target: {fileID: 211430244918319061, guid: 99ef4bccd68e84d9ba6e7c8051daf70b, type: 3}
       propertyPath: em
       value: 
       objectReference: {fileID: 1181421541}
@@ -1640,6 +1644,7 @@ GameObject:
   - component: {fileID: 880331432}
   - component: {fileID: 880331435}
   - component: {fileID: 880331434}
+  - component: {fileID: 880331436}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -1736,6 +1741,26 @@ MonoBehaviour:
   currentShield: 0
   shieldText: {fileID: 849801729}
   shield: {fileID: 7210251662772938643}
+--- !u!114 &880331436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880331429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71027e962caea441391c7d2e83953ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  slider: {fileID: 886521409}
+  card: {fileID: 1768873957}
+  AI: {fileID: 1053593181}
+  ep: {fileID: 0}
+  healthText: {fileID: 2021587326}
+  maxHealth: 12
+  currentHealth: 0
+  damage: 0
 --- !u!224 &886521408 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7210251663592063862, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
@@ -1774,8 +1799,8 @@ GameObject:
   - component: {fileID: 1053593182}
   - component: {fileID: 1053593186}
   - component: {fileID: 1053593185}
-  - component: {fileID: 1053593187}
   - component: {fileID: 1053593188}
+  - component: {fileID: 1053593189}
   m_Layer: 5
   m_Name: AI
   m_TagString: Untagged
@@ -1840,22 +1865,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053593181}
   m_CullTransparentMesh: 1
---- !u!114 &1053593187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1053593181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2144461c995fe4d54a0c20bb2653563f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AI_Health
-  maxHealth: 0
-  currentHealth: 0
-  healthText: {fileID: 1768524747}
-  health: {fileID: 1782656756}
 --- !u!114 &1053593188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1872,6 +1881,23 @@ MonoBehaviour:
   currentShield: 0
   shieldText: {fileID: 1344704571}
   shield: {fileID: 651691347}
+--- !u!114 &1053593189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053593181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865ccbe9ac6714a858d4aca508b94439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHP
+  Enemy_Health: {fileID: 1782656755}
+  card: {fileID: 1768873957}
+  AI_healthText: {fileID: 1768524747}
+  maxHealth: 15
+  currentHealth: 0
 --- !u!1 &1181421537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,10 +2300,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7210251663592063862, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1768524746}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7422071038540482331, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1782656756}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
 --- !u!1 &1768524745
 GameObject:
@@ -2427,11 +2450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa534983bed543169ce438dfad802a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1782656752 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7422071038540482331, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
-  m_PrefabInstance: {fileID: 1570999884}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1782656753 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7210251663592063862, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
@@ -2442,25 +2460,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6414762748532443103, guid: 0d55b64b720b04f5390a7b09821ca1c6, type: 3}
   m_PrefabInstance: {fileID: 1570999884}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782656752}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
---- !u!114 &1782656756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782656752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd0b234a4a994b6499d1806a9274bb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AI_HealthBar
-  slider: {fileID: 1782656755}
 --- !u!1 &1818877861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,7 +2479,6 @@ GameObject:
   - component: {fileID: 1818877863}
   - component: {fileID: 1818877865}
   - component: {fileID: 1818877866}
-  - component: {fileID: 1818877867}
   m_Layer: 5
   m_Name: Table
   m_TagString: Table
@@ -2613,18 +2617,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1818877867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1818877861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11107df410ffa445ca51014c421fceae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MaxCardTable
 --- !u!1 &1987156346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,7 +2893,7 @@ MonoBehaviour:
   player_hand_object: []
   ai_hand: []
   discard_pile: []
-  canvas: {fileID: 0}
+  canvas: {fileID: 6942430}
   data: {fileID: 0}
   CurrentIndex: 4927
   Player_hand_pos: {x: 0, y: 0, z: 0}

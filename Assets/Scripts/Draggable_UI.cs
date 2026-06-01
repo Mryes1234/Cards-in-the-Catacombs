@@ -5,6 +5,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 {
     public GameManager gm;
     public EnergyManager em;
+    public DamageManager dm;
     public GameObject table;
     public Vector2 activeTransform;
     public int cost;
@@ -41,6 +42,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             gm.CurrentIndex = cost;
             card = gameObject.GetComponent<Card>();
             em.OnCardPlayed(card);
+            dm.OnCardPlayed(card);
         }
         else
         {
