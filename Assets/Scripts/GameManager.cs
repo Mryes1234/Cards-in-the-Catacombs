@@ -13,10 +13,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxHandSize;
     [SerializeField] private SplineContainer splineContainer;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private SplineContainer tableSplineContainer;
+    [SerializeField] private Transform tableSpawnPoint;
     public List<Card_data> deck = new List<Card_data>();
     public List<Card_data> player_deck = new List<Card_data>();
+    public List<Card_data> table_deck = new List<Card_data>();
     public List<Card_data> ai_deck = new List<Card_data>();
     public List<Card> player_hand = new List<Card>();
+    public List<Card> table_hand = new List<Card>();
     public List<Card> discard = new List<Card>();
     public List<GameObject> player_hand_object = new List<GameObject>();
     public List<Card> ai_hand = new List<Card>();
@@ -30,6 +34,7 @@ public class GameManager : MonoBehaviour
     public Card blank;
     public Button myButton;
     public Vector3 offset;
+    public Vector3 tableOffset;
     public bool drawable = true;
     public bool onTable = false;
     public bool maxCard = false;
@@ -80,6 +85,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateTableCardPositions()
+    {
+        if (player_hand_object.Count == 0) return;
+        float cardSpacing = 1f / maxHandSize;
+        float firstCardPosition = 0.5f - (player_hand_object.Count - 1) * cardSpacing / 2;
+        Spline tableSpline = splineContainer.Spline;
+        
+        for (int i = 0; i < player_hand_object.Count; i++)
+        {
+            float p = firstCardPosition + i * cardSpacing;
+            Vector3 tableSplinePosition = tableSpline.EvaluatePosition(p);
+            print(tableSplinePosition);
+            //Vector3 splinePosition = 
+            Vector3 forward = tableSpline.EvaluateTangent(p);
+            Vector3 up = tableSpline.EvaluateUpVector(p);
+            Quaternion rotation = Quaternion.LookRotation(up, Vector3.Cross(up, forward).normalized);
+            player_hand_object[i].transform.DOMove(tableSplinePosition + tableOffset, 0.25f);
+            player_hand_object[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
+        }
+    }
     public void Draw()
     {
         if (player_hand_object.Count >= maxHandSize) return;
@@ -90,6 +115,10 @@ public class GameManager : MonoBehaviour
         top_card.CurrentIndex = player_hand.Count -1;
         UpdateCardPositions();
         player_deck.RemoveAt(0);
+    }
+    public void Activate()
+    {
+        
     }
     void OnButtonClicked()
     {

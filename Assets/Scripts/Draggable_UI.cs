@@ -7,6 +7,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public EnergyManager em;
     public DamageManager dm;
     public GameObject table;
+    public GameObject cardplaced;
     public Vector2 activeTransform;
     public int cost;
     public Card card;
@@ -37,12 +38,13 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         if (onTable == true)
         {
-            transform.position = activeTransform;
-            transform.rotation = initialRotation;
             gm.CurrentIndex = cost;
+            gm.Activate();
+            Destroy(cardplaced);
             card = gameObject.GetComponent<Card>();
             em.OnCardPlayed(card);
             dm.OnCardPlayed(card);
+            gm.UpdateTableCardPositions();
         }
         else
         {
