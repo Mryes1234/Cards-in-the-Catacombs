@@ -10,6 +10,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public GameObject cardplaced;
     public Vector2 activeTransform;
     public int cost;
+    public int index;
     public Card card;
     private RectTransform rectTransform;
     private Canvas canvas;
@@ -36,9 +37,9 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (onTable == true)
+        if (onTable == true && em.CanAfford(em.energyCost) == true)
         {
-            gm.CurrentIndex = cost;
+            gm.CurrentIndex = index;
             gm.Activate();
             Destroy(cardplaced);
             card = gameObject.GetComponent<Card>();
@@ -57,7 +58,7 @@ public class Draggable_UI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         initialRotation = table.transform.rotation;
         activeTransform = table.transform.position;
-        cost = card.CurrentIndex;
+        index = card.CurrentIndex;
     }
 
     // Update is called once per frame

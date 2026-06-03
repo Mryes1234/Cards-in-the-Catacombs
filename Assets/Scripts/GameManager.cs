@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gm;
+    public EnergyManager em;
     [SerializeField] private int maxHandSize;
     [SerializeField] private SplineContainer splineContainer;
     [SerializeField] private Transform spawnPoint;
@@ -22,7 +23,9 @@ public class GameManager : MonoBehaviour
     public List<Card> player_hand = new List<Card>();
     public List<Card> table_hand = new List<Card>();
     public List<Card> discard = new List<Card>();
+    public List<Card> Active_player_cards = new List<Card>();
     public List<GameObject> player_hand_object = new List<GameObject>();
+    public List<GameObject> Active_player_hand_object = new List<GameObject>();
     public List<Card> ai_hand = new List<Card>();
     public List<Card_data> discard_pile = new List<Card_data>();
 
@@ -32,7 +35,9 @@ public class GameManager : MonoBehaviour
     public Vector3 Player_hand_pos;
     public Vector3 ai_hand_pos;
     public Card blank;
+    public Card activeblank;
     public Button myButton;
+    public GameObject table;
     public Vector3 offset;
     public Vector3 tableOffset;
     public bool drawable = true;
@@ -87,12 +92,12 @@ public class GameManager : MonoBehaviour
 
     public void UpdateTableCardPositions()
     {
-        if (player_hand_object.Count == 0) return;
+        if (Active_player_hand_object.Count == 0) return;
         float cardSpacing = 1f / maxHandSize;
-        float firstCardPosition = 0.5f - (player_hand_object.Count - 1) * cardSpacing / 2;
+        float firstCardPosition = 0.5f - (Active_player_hand_object.Count - 1) * cardSpacing / 2;
         Spline tableSpline = splineContainer.Spline;
         
-        for (int i = 0; i < player_hand_object.Count; i++)
+        for (int i = 0; i < Active_player_hand_object.Count; i++)
         {
             float p = firstCardPosition + i * cardSpacing;
             Vector3 tableSplinePosition = tableSpline.EvaluatePosition(p);
@@ -101,8 +106,8 @@ public class GameManager : MonoBehaviour
             Vector3 forward = tableSpline.EvaluateTangent(p);
             Vector3 up = tableSpline.EvaluateUpVector(p);
             Quaternion rotation = Quaternion.LookRotation(up, Vector3.Cross(up, forward).normalized);
-            player_hand_object[i].transform.DOMove(tableSplinePosition + tableOffset, 0.25f);
-            player_hand_object[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
+            Active_player_hand_object[i].transform.DOMove(tableSplinePosition + tableOffset, 0.25f);
+            Active_player_hand_object[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
         }
     }
     public void Draw()
@@ -118,6 +123,21 @@ public class GameManager : MonoBehaviour
     }
     public void Activate()
     {
+        if(em.CanAfford(em.energyCost) == true)
+        {
+            Card activeCard = Instantiate(activeblank, table.transform.position, table.transform.rotation, canvas.transform);
+            activeCard.data = player_hand[CurrentIndex].data;
+            Active_player_cards.Add(activeCard);
+            Active_player_hand_object.Add(activeCard.gameObject);
+            player_hand.RemoveAt(CurrentIndex);
+            player_hand_object.RemoveAt(CurrentIndex);
+            activeCard.CurrentIndex = Active_player_cards.Count -1;
+        }
+        else
+        {
+            UpdateCardPositions();
+            UpdateTableCardPositions();
+        }
         
     }
     void OnButtonClicked()

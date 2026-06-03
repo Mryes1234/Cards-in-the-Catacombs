@@ -9,6 +9,7 @@ public class EnergyManager : MonoBehaviour
     public TMP_Text energy;
     public int currentEnergy;
     public int maxEnergy;
+    public int energyCost;
     
     void Awake() => Instance = this;
     public bool CanAfford(int energyCost) => currentEnergy >= energyCost;
